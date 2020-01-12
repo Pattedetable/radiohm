@@ -125,6 +125,6 @@ Moreover, on Windows, you can simply double-click on the ```radiohm.py``` file.
 This program is distributed under the GNU GPLv3 licence.  The details of this license can be found in the `LICENSE` file.
 The short version is that you are free to use this software, to modify its source code, and to redistribute it in either its original or modified form.  However, you have to give those same rights to the users of the redistributed software.
 
-The source code is available on [GitHub](https://github.com/Pattedetable/).
+The source code is available on [GitHub](https://github.com/Pattedetable/radiohm).
 
 This software uses libraries from Qt under the LGPLv3, Python, Numpy and Matplotlib.
