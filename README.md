@@ -2,6 +2,8 @@
 
 ![screenshot](https://raw.githubusercontent.com/Pattedetable/radiohm/master/radiohm_screenshot.png)
 
+_The English version follows_
+
 ## Français
 
 Ce programme a pour but de faire l'acquisition de données de l'intensité lumineuse en fonction de la position dans une expérience d'interférence et de diffraction.
