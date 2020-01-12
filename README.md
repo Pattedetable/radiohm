@@ -8,7 +8,7 @@ Ce programme a pour but de faire l'acquisition de données de l'intensité lumin
 
 ![screenshot](https://raw.githubusercontent.com/Pattedetable/radiohm/master/montage.jpg)
 
-L'acquisition passe par une carte Arduino.  Le calcul de la position se fait à partir de la mesure de la différence de potentiel aux bornes d'une résistance variable.  Un détecteur de lumière est fixé à cette résistance.  Dans le graphique, la position est représentée sur l'axe des x, et l'intensité lumineuse (en fait la différence de potentiel aux bornes du détecteur) sur l'axe des y.
+L'acquisition passe par une carte Arduino avec le script ```radhiohm.ino```.  Le calcul de la position se fait à partir de la mesure de la différence de potentiel aux bornes d'une résistance variable.  Un détecteur de lumière est fixé à cette résistance.  Dans le graphique, la position est représentée sur l'axe des x, et l'intensité lumineuse (en fait la différence de potentiel aux bornes du détecteur) sur l'axe des y.
 
 ![screenshot](https://raw.githubusercontent.com/Pattedetable/radiohm/master/circuit.png)
 
@@ -70,7 +70,7 @@ This software serves to gather data of the intensity of the light as a function 
 
 ![screenshot](https://raw.githubusercontent.com/Pattedetable/radiohm/master/montage.jpg)
 
-The data is gathered through an Arduino board.  The position is computed from the voltage of a variable resistor.  A light detector is fixed on the resistor.  On the graph, the position is represented on the x axis, while the intensity of the light (in fact the voltage of the detector) is represented on the y axis.
+The data is gathered through an Arduino board with the ```radhiohm.ino``` script on it.  The position is computed from the voltage of a variable resistor.  A light detector is fixed on the resistor.  On the graph, the position is represented on the x axis, while the intensity of the light (in fact the voltage of the detector) is represented on the y axis.
 
 ![screenshot](https://raw.githubusercontent.com/Pattedetable/radiohm/master/circuit.png)
 
