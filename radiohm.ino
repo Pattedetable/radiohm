@@ -6,7 +6,7 @@ int VRESISTANCE = A5;
 // Acquisitions par seconde
 int nbParSeconde = 100;
 int temps;
-int nbmoy = 50;
+int nbmoy = 25;
 
 float potCapteur;
 float potResistance;
@@ -31,11 +31,11 @@ void loop() {
 
   potCapteur = potCapteur/nbmoy;
   potResistance = potResistance/nbmoy;
-  
+
   Serial.print(potResistance);
   Serial.print(" ");
   Serial.println(potCapteur);
   temps = 1000/nbParSeconde;
   delay(temps);
-  
+
 }
