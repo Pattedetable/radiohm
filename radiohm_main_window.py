@@ -216,7 +216,10 @@ class Ui_MainWindow(object):
             if systeme_exploitation == 'Windows' and "Serial" in p.description:
                 print(p.device)
                 return p.device
-            elif "Arduino" in p.manufacturer:
+            elif systeme_exploitation == 'Linux' and "Arduino" in p.manufacturer:
+                print(p.device)
+                return p.device
+            elif systeme_exploitation == 'Darwin' and "Arduino" in str(p.manufacturer):
                 print(p.device)
                 return p.device
 
