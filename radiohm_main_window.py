@@ -213,9 +213,10 @@ class Ui_MainWindow(object):
         ports = list(serial.tools.list_ports.comports())
         systeme_exploitation = platform.system()
         for p in ports:
-            if systeme_exploitation == 'Windows' and "Serial" in p.description:
-                print(p.device)
-                return p.device
+            if systeme_exploitation == 'Windows':
+                if "Serial" in p.description or "série" in p.description:
+                    print(p.device)
+                    return p.device
             elif systeme_exploitation == 'Linux' and "Arduino" in p.manufacturer:
                 print(p.device)
                 return p.device
