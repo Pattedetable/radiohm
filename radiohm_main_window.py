@@ -90,7 +90,7 @@ class Ui_MainWindow(object):
         self.E = 4.996 # Voltage de la source
 
         self.baud     = 9600                          # baud rate
-        self.filename = 'data.txt'                # log file to save data in
+#        self.filename = 'data.txt'                # log file to save data in
         fps = 100
         self.flagUpdate = False
 
@@ -102,10 +102,11 @@ class Ui_MainWindow(object):
 
         self.courbe = self.plot.plot(pen=1)
 
+        self.compteur = 0
         self.flagConnexion = 0
 
         self.connexionold = 0
-        self.outFile = open(self.filename,'w')
+#        self.outFile = open(self.filename,'w')
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(lambda: self.update())
         self.timer.start(int(1000/fps))
@@ -165,8 +166,9 @@ class Ui_MainWindow(object):
         self.xdata = []
         self.ydata = []
         self.courbe.setData(self.xdata, self.ydata)
-        self.outFile.seek(0)
-        self.outFile.truncate()
+#        self.outFile.seek(0)
+#        self.outFile.truncate()
+        self.compteur = 0
         return None
 
     def enregistrer(self):
@@ -175,13 +177,25 @@ class Ui_MainWindow(object):
         nom_fichier = fichier[0]
         if nom_fichier != "" and nom_fichier[-4:] != ".txt":
             nom_fichier = nom_fichier + ".txt"
-        systeme_exploitation = platform.system()
-        if systeme_exploitation == 'Windows':
-            commande = 'copy ' + self.filename + ' "' + nom_fichier + '"'
-        else:
-            commande = 'cp ' + self.filename + ' "' + nom_fichier + '"'
-        print(commande)
-        os.system(commande)
+        fichier = open(nom_fichier, 'w')
+        for i in range(0,self.compteur):
+            sortie = str(self.xdata[i]) + " " + str(self.ydata[i]) + "\n"
+            fichier.write(sortie)
+        fichier.close()
+
+#    def enregistrer(self):
+#        extension = self._translate("MainWindow", "Données") + " (*.txt)"
+#        fichier = QtGui.QFileDialog.getSaveFileName(None, self._translate("MainWindow", "Enregistrer sous..."), '', extension)
+#        nom_fichier = fichier[0]
+#        if nom_fichier != "" and nom_fichier[-4:] != ".txt":
+#            nom_fichier = nom_fichier + ".txt"
+#        systeme_exploitation = platform.system()
+#        if systeme_exploitation == 'Windows':
+#            commande = 'copy ' + self.filename + ' "' + nom_fichier + '"'
+#        else:
+#            commande = 'cp ' + self.filename + ' "' + nom_fichier + '"'
+#        print(commande)
+#        os.system(commande)
 
     def graphique(self):
 
@@ -246,6 +260,7 @@ class Ui_MainWindow(object):
         if self.connexion == 1 and self.flagConnexion == 1:
             line = self.serialPort.readline() # Jeter la première ligne car elle est souvent incomplète #ICI
             if self.flagUpdate == True:
+                self.compteur = self.compteur + 1
                 line = self.serialPort.readline()
                 line2 = line.rstrip()
                 ligne = line2.decode("utf-8")
@@ -258,6 +273,6 @@ class Ui_MainWindow(object):
                 x = 1/self.a*(x*self.RV*self.R/(self.E*self.RV-x*self.RV-self.R*x) - self.b)/100
                 self.xdata.append(x)
                 self.ydata.append(y)
-                donnees = str(x) + " " + str(y) + "\n"
-                self.outFile.write(donnees)
+#                donnees = str(x) + " " + str(y) + "\n"
+#                self.outFile.write(donnees)
                 self.courbe.setData(self.xdata, self.ydata)
